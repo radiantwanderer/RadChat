@@ -1,12 +1,12 @@
 package main
 
 import (
-    "encoding/json"
+    //"encoding/json"
     "fmt"
     "github.com/gorilla/mux"
     "net/http"
 
-    "github.com/radiantwanderer/RadChat/backend/pkg/websocket"
+    "github.com/radiantwanderer/RadChat/pkg/websocket"
 )
 
 func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
@@ -37,7 +37,14 @@ func setupRoutes() {
 }
 
 func main() {
-    fmt.Println("Distributed Chat App v0.01")
+    fmt.Println("RadChat v0.02")
     setupRoutes()
+
+    r := mux.NewRouter()
+
+    r.Handle("/", http.FileServer(http.Dir("./views/")))
+
+    r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
+
     http.ListenAndServe(":8080", nil)
 }
