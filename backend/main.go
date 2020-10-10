@@ -1,10 +1,12 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
+    "github.com/gorilla/mux"
     "net/http"
 
-    "chatApp/backend/pkg/websocket"
+    "github.com/radiantwanderer/RadChat/backend/pkg/websocket"
 )
 
 func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
