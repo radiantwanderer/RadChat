@@ -30,7 +30,7 @@ func (c *Client) Read() {
             log.Println(err)
             return
         }
-        message := Message{Type: messageType, Body: "no " + string(p)}
+        message := Message{Type: messageType, Body: string(p)}
         c.Pool.Broadcast <- message
         fmt.Printf("Message Received: %+v\n", message)
     }

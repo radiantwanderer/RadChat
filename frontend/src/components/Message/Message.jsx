@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState }/*, { Component }*/ from "react";
 import "./Message.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -18,17 +18,21 @@ import { useAuth0 } from "@auth0/auth0-react";
     }
 }*/
 
-const Message = () => {
+const Message = (props) => {
     const { user, isAuthenticated, isLoading } = useAuth0();
+    //const [ message, setMessage ] = useState("");
 
     if (isLoading) {
         return <div>Loading ...</div>;
     }
 
+    let temp = JSON.parse(props.message);
+    //setMessage(temp);
+
     return (
-        isAuthentiacted && (
+        isAuthenticated && (
             <div>
-                {user.name}
+                {user.name}: {temp.body}
             </div>
         )
     )
