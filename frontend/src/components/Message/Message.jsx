@@ -32,7 +32,7 @@ const Message = (props) => {
     return (
         isAuthenticated && (
             <div>
-                {user.name}: {temp.body}
+                {temp.body}
             </div>
         )
     )
