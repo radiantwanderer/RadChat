@@ -4,50 +4,8 @@ import { connect, sendMsg } from "./api";
 import Header from './components/Header/Header';
 import ChatHistory from './components/ChatHistory/ChatHistory';
 import ChatInput from './components/ChatInput/ChatInput';
-import LoginButton from './components/LoginButton';
-import LogoutButton from './components/LogoutButton';
-import Profile from './components/Profile';
+import LoginControl from './components/LoginControl';
 import { useAuth0 } from "@auth0/auth0-react";
-
-
-/*class App extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          chatHistory: []
-      }
-  }
-
-  send(event) {
-      if(event.keyCode === 13) {
-          sendMsg("as" + event.target.value);
-          event.target.value = "";
-      }
-  }
-
-  render() {
-      return (
-            <div className="App">
-                <Header />
-                <LoginButton />
-                <Profile />
-                <ChatHistory chatHistory={this.state.chatHistory} />
-                <ChatInput send={this.send} />
-            </div>
-      );
-  }
-
-  componentDidMount() {
-      connect((msg) => {
-          console.log("New Message")
-          this.setState(prevState => ({
-              chatHistory: [...this.state.chatHistory, msg]
-          }))
-          console.log(this.state);
-      });
-  }
-}*/
-
 
 const App = () => {
     const[chatHistory, setChatHistory] = useState([]);
@@ -68,10 +26,9 @@ const App = () => {
     });
 
     return (
-          <div>
+          <div className="App">
               <Header />
-              <LoginButton />
-              <Profile />
+              <LoginControl />
               <ChatHistory chatHistory={chatHistory} />
               <ChatInput send={send} />
           </div>
