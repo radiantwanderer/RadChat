@@ -1,4 +1,4 @@
 # RadChat
 
-## To run backend server
+## Running Go and Postgres server
 docker-compose up
